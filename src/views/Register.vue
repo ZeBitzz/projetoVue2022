@@ -1,36 +1,38 @@
 <template>
-  <div>
+  <div class="registerForm">
     <br />
     <br />
-    <form @submit.prevent="register">
-      <label for="txtUsername">USERNAME</label>
-      <br />
-      <input type="text" id="txtUsername" v-model="form.username" required />
-      <br />
-      <label for="txtEmaiç">EMAIL</label>
-      <br />
-      <input type="text" id="txtEmial" v-model="form.email" required />
-      <br />
-      <label for="txtPassword">PASSWORD</label>
-      <br />
-      <input
-        type="password"
-        id="txtPassword"
-        v-model="form.password"
-        required
-      />
-      <br />
-      <label for="txtConfirmPassword">CONFIRM PASSWORD</label>
-      <br />
-      <input
-        type="password"
-        id="txtConfirmPassword"
-        v-model="form.confirmpassword"
-        required
-      />
-      <br />
-      <input type="submit" value="REGISTER" />
-    </form>
+    <div class="containerResgister">
+      <form @submit.prevent="register">
+        <label for="txtUsername">USERNAME</label>
+        <br />
+        <input type="text" id="txtUsername" v-model="form.username" required />
+        <br />
+        <label for="txtEmaiç">EMAIL</label>
+        <br />
+        <input type="text" id="txtEmial" v-model="form.email" required />
+        <br />
+        <label for="txtPassword">PASSWORD</label>
+        <br />
+        <input
+          type="password"
+          id="txtPassword"
+          v-model="form.password"
+          required
+        />
+        <br />
+        <label for="txtConfirmPassword">CONFIRM PASSWORD</label>
+        <br />
+        <input
+          type="password"
+          id="txtConfirmPassword"
+          v-model="form.confirmpassword"
+          required
+        />
+        <br />
+        <input type="submit" value="REGISTER" />
+      </form>
+    </div>
   </div>
 </template>
 
@@ -134,5 +136,11 @@ input[type="email"] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+}
+.registerForm {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

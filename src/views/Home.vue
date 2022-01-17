@@ -2,13 +2,22 @@
   <div>
     <div class="image-wrapper">
       <img src="../assets/homebanner.jpg" />
+      <div class="text-wrapper">
+        <h1>Bom dia, {{ getLoggedUser.username }}!</h1>
+        <h5>Escolha entre os tutoriais em vídeos online que temos para si</h5>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Home",
+  computed: {
+    ...mapGetters(["getLoggedUser", "getGifts", "isGiftnameAvailable"]),
+  },
 };
 </script>
 <style scoped>
@@ -20,5 +29,20 @@ export default {
 .image-wrapper img {
   width: 100%;
   height: auto;
+}
+.text-wrapper {
+  width: 100%;
+  position: relative;
+  margin-top: -10%;
+}
+.text-wrapper h1 {
+  text-align: center;
+  font-size: 3vw;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+h5 {
+  color: var(--secondary-color);
+  font-size: 1.5vw;
 }
 </style>

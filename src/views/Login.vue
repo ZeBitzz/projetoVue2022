@@ -1,26 +1,27 @@
 <template>
-  <div>
-    <br />
-    <i class="fas fa-user-lock"></i>
-    <form @submit.prevent="login">
-      <br />
-      <label for="txtUsername">USERNAME</label>
-      <br />
-      <input type="text" id="txtUsername" v-model="username" required />
-      <br />
-      <br />
-      <label for="txtPassword">PASSWORD</label>
-      <br />
-      <input type="password" id="txtPassword" v-model="password" required />
-      <br />
-      <input type="submit" value="LOGIN" />
-    </form>
-    <h5>
-      No account?
-      <router-link class="register-text" :to="{ name: 'register' }"
-        >Please create one</router-link
-      >
-    </h5>
+  <div class="loginForm">
+    <div class="containerLogin">
+      <i class="fas fa-user-lock"></i>
+      <form @submit.prevent="login">
+        <br />
+        <label for="txtUsername">USERNAME</label>
+        <br />
+        <input type="text" id="txtUsername" v-model="username" required />
+        <br />
+        <br />
+        <label for="txtPassword">PASSWORD</label>
+        <br />
+        <input type="password" id="txtPassword" v-model="password" required />
+        <br />
+        <input type="submit" value="LOGIN" />
+      </form>
+      <h5>
+        No account?
+        <router-link class="register-text" :to="{ name: 'register' }"
+          >Please create one</router-link
+        >
+      </h5>
+    </div>
   </div>
 </template>
 
@@ -122,5 +123,12 @@ input[type="email"] {
 }
 .fas fa-user-lock {
   height: 100%;
+}
+
+.loginForm {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

@@ -1,11 +1,9 @@
 <template lang="">
-  <div>
-    <footer>
-      <p>
-        Copyright &copy; 2022 • ESCOLA SUPERIOR MEDIA ARTES E DESIGN • TSIW 2022
-      </p>
-    </footer>
-  </div>
+  <footer>
+    <p>
+      Copyright &copy; 2022 • ESCOLA SUPERIOR MEDIA ARTES E DESIGN • TSIW 2022
+    </p>
+  </footer>
 </template>
 <script>
 export default {
