@@ -1,6 +1,8 @@
 <template>
   <div>
-    <img src="../assets/homebanner.jpg" />
+    <div class="image-wrapper">
+      <img src="../assets/homebanner.jpg" />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,13 @@ export default {
 };
 </script>
 <style scoped>
-img {
-  height: calc(100vh - 96px);
+.image-wrapper {
+  height: calc(100vh - 60px);
+  width: 100%;
+  overflow: hidden;
+}
+.image-wrapper img {
+  width: 100%;
+  height: auto;
 }
 </style>

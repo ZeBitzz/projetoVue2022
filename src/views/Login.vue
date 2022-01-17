@@ -1,6 +1,7 @@
 <template>
   <div>
     <br />
+    <i class="fas fa-user-lock"></i>
     <form @submit.prevent="login">
       <br />
       <label for="txtUsername">USERNAME</label>
@@ -118,5 +119,8 @@ input[type="email"] {
 }
 
 .register-text {
+}
+.fas fa-user-lock {
+  height: 100%;
 }
 </style>

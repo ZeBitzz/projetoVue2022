@@ -57,7 +57,7 @@ li {
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  width: 100vw;
+  width: 100%;
   top: 0;
   box-sizing: border-box;
   position: sticky;
