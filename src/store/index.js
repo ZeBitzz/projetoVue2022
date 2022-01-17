@@ -5,17 +5,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    gifts: localStorage.gifts ? JSON.parse(localStorage.gifts) : [],
     users: localStorage.users
       ? JSON.parse(localStorage.users)
       : [
           {
             username: "admin",
             password: "admin",
+            email: "admin@gmail.com",
             type: "admin",
           },
         ],
-    loggedUser: null,
+    loggedUser: localStorage.loggedUser
+      ? JSON.parse(localStorage.loggedUser)
+      : null,
   },
   getters: {
     isUser: (state) => (username, password) =>

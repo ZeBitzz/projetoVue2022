@@ -16,7 +16,9 @@
     </form>
     <h5>
       No account?
-      <router-link :to="{ name: 'register' }">please create one</router-link>
+      <router-link class="register-text" :to="{ name: 'register' }"
+        >Please create one</router-link
+      >
     </h5>
   </div>
 </template>
@@ -113,5 +115,8 @@ input[type="email"] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+}
+
+.register-text {
 }
 </style>

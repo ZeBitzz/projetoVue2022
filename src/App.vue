@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <NavBar></NavBar>
-    </div>
-    <router-view />
+    <component :is="layout">
+      <router-view />
+    </component>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-
+import Footer from "@/components/Footer.vue";
+import "@fortawesome/fontawesome-free/css/all.css";
+const default_layout = "default";
 export default {
-  name: "Home",
   components: {
-    NavBar,
+    Footer,
+  },
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || default_layout) + "-layout";
+    },
   },
 };
 </script>
 <style>
+@import "../assets/styles/variables.css";
+@import "../assets/styles/reset.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

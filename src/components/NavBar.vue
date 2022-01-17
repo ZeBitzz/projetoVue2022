@@ -1,66 +1,86 @@
 <template>
-  <div id="navBar">
-    <div class="nav">
-      <ul>
-        <li><a href="#" class="nav-link">Home</a></li>
-        <li>
-          <a href="#" class="nav-link"><em>Act Now!</em></a>
-        </li>
-        <li><a href="#" class="nav-link">FAQ</a></li>
-        <li><a href="#" class="nav-link">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
+  <ul class="nav">
+    <router-link class="nav-brand" :to="{ name: 'home' }"
+      ><img src="../assets/logotut.png" alt=""
+    /></router-link>
+    <li><a class="nav-link">Tutoriais</a></li>
+    <li><i class="fas fa-user"></i></li>
+    <li v-if="getLoggedUser.type == 'admin'"><i class="fas fa-cog"></i></li>
+    <li @click="logout"><i class="fas fa-door-open"></i></li>
+  </ul>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "NavBar",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["getLoggedUser"]),
+  },
+  methods: {
+    ...mapMutations(["SET_LOGGED_USER", "SET_LOGOUT"]),
+    logout() {
+      this.SET_LOGOUT();
+      this.$router.push({ name: "login" });
+    },
+  },
 };
 </script>
 
 <style scoped>
-/* This first section is a simple "reset". It allows the navbar to push up against the top of the browser window with no white space around it. This code also sets the default font for your whole page. Put it at the very top of your css page.  */
+img {
+  margin-right: auto;
+  height: 40px;
+  width: auto;
+}
+
 html,
 body,
-div,
-p,
 ul,
 li {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-  font-family: "Roboto", sans-serif;
   font-weight: 100;
   text-align: right;
 }
 
-/* This class is applied to the containing div <div class="nav"> and is used to set the background color and height of the navbar */
+.nav-brand {
+  margin-right: auto;
+}
 .nav {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  width: 100vw;
+  top: 0;
+  box-sizing: border-box;
+  position: sticky;
+  z-index: 10;
   background: #fff;
-  height: 60px; /* set same as height & line-height below */
+  height: 60px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
 .nav li {
   display: inline-block;
   list-style: none;
-  height: 60px; /* should be the same as line-height */
-  line-height: 60px; /* should be the same as height */
-  padding: 0 40px; /* "0" sets top and bottom padding to none */
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  transition: transform 0.3s ease-out;
 }
 
-/* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
 .nav li:hover {
-  background: red;
-  transition: background 0.3s;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
-/* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
 .nav-link {
   color: #000;
   text-decoration: none;
