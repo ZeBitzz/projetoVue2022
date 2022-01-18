@@ -1,6 +1,7 @@
-<template lang="">
-  <div>
-    <p>USERS LIST</p>
+<template>
+  <div class="containerTable">
+    <h1>GESTÃO DE UTILIZADORES</h1>
+    <h3>Esta tabela têm como função remover utilizadores da aplicação!</h3>
     <table v-if="getUsers.length">
       <tr>
         <th>#</th>
@@ -13,7 +14,11 @@
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
         <td>
-          <button @click="removeUser(user.username)">X</button>
+          <i
+            class="fa fa-trash"
+            aria-hidden="true"
+            @click="removeUser(user.username)"
+          ></i>
         </td>
       </tr>
     </table>
@@ -36,4 +41,34 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style scoped>
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th,
+td,
+tr {
+  border: 2px solid #052638;
+  padding: 30px;
+}
+
+.containerTable {
+  padding-top: 3rem;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+h3 {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+i {
+  cursor: pointer;
+}
+</style>

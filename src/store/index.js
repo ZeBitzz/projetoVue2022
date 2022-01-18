@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    tutorials: localStorage.tutorials ? JSON.parse(localStorage.tutorials) : [],
     users: localStorage.users
       ? JSON.parse(localStorage.users)
       : [
