@@ -1,7 +1,7 @@
 <template>
   <div class="containerTable">
     <h1>GESTÃO DE UTILIZADORES</h1>
-    <h3>Esta tabela têm como função remover utilizadores da aplicação!</h3>
+    <h3>Esta tabela tem como função remover utilizadores da aplicação!</h3>
     <table v-if="getUsers.length">
       <tr>
         <th>#</th>
@@ -57,7 +57,9 @@ tr {
 .containerTable {
   padding-top: 3rem;
 }
-
+.containerForm {
+  padding-top: 3rem;
+}
 h1 {
   font-size: 30px;
   font-weight: bold;

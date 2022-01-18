@@ -27,8 +27,11 @@ export default new Vuex.Store({
       ),
     isUsernameAvailable: (state) => (username) =>
       state.users.every((user) => user.username !== username),
+    isTutoriallinkAvailable: (state) => (link) =>
+      state.tutorials.every((tutorial) => tutorial.link !== link),
     getLoggedUser: (state) => state.loggedUser,
     getUsers: (state) => state.users,
+    getTutorials: (state) => state.tutorials,
   },
   mutations: {
     SET_LOGGED_USER(state, payload) {
@@ -47,6 +50,17 @@ export default new Vuex.Store({
       let index = state.users.findIndex((user) => user.username === payload);
       state.users.splice(index, 1);
       localStorage.users = JSON.stringify(state.users);
+    },
+    SET_REMOVE_TUTORIAL(state, payload) {
+      let index = state.tutorials.findIndex(
+        (tutorial) => tutorial.title === payload
+      );
+      state.tutorials.splice(index, 1);
+      localStorage.tutorials = JSON.stringify(state.tutorials);
+    },
+    SET_NEW_TUTORIAL(state, payload) {
+      state.tutorials.push(payload);
+      localStorage.tutorials = JSON.stringify(state.tutorials);
     },
   },
   modules: {},
