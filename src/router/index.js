@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Home from "../views/Home.vue";
+import Manager from "../views/Manager.vue";
 import store from "../store/index.js";
 
 Vue.use(VueRouter);
@@ -22,6 +23,12 @@ const routes = [
     path: "/home",
     name: "home",
     component: Home,
+    meta: { public: false, layout: "dashboard" },
+  },
+  {
+    path: "/manager",
+    name: "manager",
+    component: Manager,
     meta: { public: false, layout: "dashboard" },
   },
 ];

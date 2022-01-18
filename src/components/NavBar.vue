@@ -1,11 +1,13 @@
 <template>
   <ul class="nav">
-    <router-link class="nav-brand" :to="{ name: 'home' }"
-      ><img src="../assets/logotut.png" alt=""
+    <router-link class="nav-brand" :to="{ name: 'home' }">
+      <img src="../assets/logotut.png" alt=""
     /></router-link>
     <li><a class="nav-link">Tutoriais</a></li>
     <li><i class="fas fa-user"></i></li>
-    <li v-if="getLoggedUser.type == 'admin'"><i class="fas fa-cog"></i></li>
+    <router-link :to="{ name: 'manager' }">
+      <li v-if="getLoggedUser.type == 'admin'"><i class="fas fa-cog"></i></li>
+    </router-link>
     <li @click="logout"><i class="fas fa-door-open"></i></li>
   </ul>
 </template>

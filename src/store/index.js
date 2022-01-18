@@ -27,6 +27,7 @@ export default new Vuex.Store({
     isUsernameAvailable: (state) => (username) =>
       state.users.every((user) => user.username !== username),
     getLoggedUser: (state) => state.loggedUser,
+    getUsers: (state) => state.users,
   },
   mutations: {
     SET_LOGGED_USER(state, payload) {
@@ -41,7 +42,11 @@ export default new Vuex.Store({
       state.loggedUser = null;
       localStorage.removeItem("loggedUser");
     },
+    SET_REMOVE_USER(state, payload) {
+      let index = state.users.findIndex((user) => user.username === payload);
+      state.users.splice(index, 1);
+      localStorage.users = JSON.stringify(state.users);
+    },
   },
-
   modules: {},
 });
