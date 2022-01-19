@@ -4,7 +4,9 @@
       <img src="../assets/logotut.png" alt=""
     /></router-link>
     <li><a class="nav-link">Tutoriais</a></li>
-    <li><i class="fas fa-user"></i></li>
+    <router-link :to="{ name: 'profile' }">
+      <li><i class="fas fa-user"></i></li>
+    </router-link>
     <router-link :to="{ name: 'manager' }">
       <li v-if="getLoggedUser.type == 'admin'"><i class="fas fa-cog"></i></li>
     </router-link>

@@ -1,7 +1,7 @@
 <template>
   <div class="containerTable">
     <h1>GESTÃO DE TUTORIAIS</h1>
-    <h3>Esta tabela tem como função remover tutoriais</h3>
+    <h3>Esta tabela tem como função remover tutoriais!</h3>
     <table v-if="getTutorials.length">
       <tr>
         <th>#</th>
@@ -57,11 +57,9 @@ tr {
 }
 
 .containerTable {
-  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
-.containerForm {
-  padding-top: 3rem;
-}
+
 h1 {
   font-size: 30px;
   font-weight: bold;

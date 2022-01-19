@@ -7,16 +7,20 @@
         <h5>Escolha entre os tutoriais em vídeos online que temos para si</h5>
       </div>
     </div>
+    <MainTutorials></MainTutorials>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-
+import MainTutorials from "../components/MainTutorials.vue";
 export default {
   name: "Home",
+  components: {
+    MainTutorials,
+  },
   computed: {
-    ...mapGetters(["getLoggedUser", "getGifts", "isGiftnameAvailable"]),
+    ...mapGetters(["getLoggedUser"]),
   },
 };
 </script>

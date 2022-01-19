@@ -5,11 +5,17 @@
 
     <form @submit.prevent="addTutorial">
       <label for="txtTutorial">TUTORIAL</label>
+      <br />
       <input type="text" id="txtTutorial" v-model="form.title" required />
+      <br />
       <label for="txtCategory">CATEGORIA</label>
+      <br />
       <input type="text" id="txtCategory" v-model="form.category" required />
+      <br />
       <label for="txtLink">LINK</label>
+      <br />
       <input type="text" id="txtLink" v-model="form.link" required />
+      <br />
       <input type="submit" value="ADD TUTORIAL" />
       <FormSteps @add-step="addStep" />
       <ul
@@ -17,9 +23,9 @@
         v-for="(step, index) in form.steps"
         :key="index"
       >
-        <li>{{ step.title }}</li>
-        <li>{{ step.timestamp }}</li>
-        <li>{{ step.description }}</li>
+        <li>Título:{{ step.title }}</li>
+        <li>Frame Temporal: {{ step.timestamp }}</li>
+        <li>Descrição: {{ step.description }}</li>
       </ul>
     </form>
   </div>
@@ -56,6 +62,8 @@ export default {
           link: this.form.link,
           steps: this.form.steps,
         });
+        this.form.steps = [];
+        alert("TUTORIAL CREATED!");
       } else {
         alert("TUTORIAL ALREADY EXIST! PLEASE TRY AGAIN!");
       }
@@ -90,5 +98,43 @@ h1 {
 h3 {
   font-size: 20px;
   padding-bottom: 20px;
+}
+
+/* form style */
+
+input[type="text"],
+select {
+  width: 10%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+div {
+  padding: 20px;
 }
 </style>

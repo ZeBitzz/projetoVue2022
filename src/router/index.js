@@ -5,6 +5,7 @@ import Register from "../views/Register.vue";
 import Home from "../views/Home.vue";
 import Manager from "../views/Manager.vue";
 import store from "../store/index.js";
+import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,12 @@ const routes = [
     path: "/manager",
     name: "manager",
     component: Manager,
+    meta: { public: false, layout: "dashboard" },
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
     meta: { public: false, layout: "dashboard" },
   },
 ];
