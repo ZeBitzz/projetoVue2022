@@ -59,8 +59,13 @@ export default new Vuex.Store({
       localStorage.tutorials = JSON.stringify(state.tutorials);
     },
     SET_NEW_TUTORIAL(state, payload) {
+      console.log("payload", payload);
       state.tutorials.push(payload);
       localStorage.tutorials = JSON.stringify(state.tutorials);
+    },
+    SET_NEW_FAVOURITE(state, payload) {
+      /* const storage = JSON.parse(localStorage.geItem("users")) */
+      console.log(payload);
     },
   },
   modules: {},

@@ -18,7 +18,7 @@
       <br />
       <input type="submit" value="ADD TUTORIAL" />
       <FormSteps @add-step="addStep" />
-      <ul
+      <!--  <ul
         class="containerStep"
         v-for="(step, index) in form.steps"
         :key="index"
@@ -26,7 +26,7 @@
         <li>Título:{{ step.title }}</li>
         <li>Frame Temporal: {{ step.timestamp }}</li>
         <li>Descrição: {{ step.description }}</li>
-      </ul>
+      </ul> -->
     </form>
   </div>
 </template>
@@ -45,22 +45,27 @@ export default {
         category: "",
         link: "",
         steps: [],
+        id: JSON.parse(localStorage.getItem("tutorials")).length
+          ? JSON.parse(localStorage.getItem("tutorials")).length + 1
+          : 0,
       },
       formStep: { title: "", timestamp: "", description: "" },
     };
   },
   computed: {
-    ...mapGetters(["getLoggedUser", "getTutorial", "isTutoriallinkAvailable"]),
+    ...mapGetters(["getLoggedUser", "getTutorials", "isTutoriallinkAvailable"]),
   },
   methods: {
     ...mapMutations(["SET_NEW_TUTORIAL"]),
     addTutorial() {
       if (this.isTutoriallinkAvailable(this.form.link)) {
+        console.log("form", this.form);
         this.SET_NEW_TUTORIAL({
           title: this.form.title,
           category: this.form.category,
           link: this.form.link,
           steps: this.form.steps,
+          id: this.form.id,
         });
         this.form.steps = [];
         alert("TUTORIAL CREATED!");
@@ -70,6 +75,7 @@ export default {
     },
     addStep(step) {
       this.form.steps.push(step);
+      alert("YOU JUST ADD A STEP");
     },
   },
 };

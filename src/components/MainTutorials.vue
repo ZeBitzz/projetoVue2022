@@ -6,6 +6,7 @@
       <td>{{ tutorial.title }}</td>
       <td>{{ tutorial.category }}</td>
       <td>{{ tutorial.link }}</td>
+      <td><button></button></td>
       <td></td>
     </tr>
     <select>
@@ -18,9 +19,20 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      form: {
+        tutorialId: "",
+        userUsername: "",
+      },
+    };
+  },
   name: "MainTutorials",
   computed: {
     ...mapGetters(["getLoggedUser", "getTutorials"]),
+  },
+  methods: {
+    addFavorite() {},
   },
 };
 </script>

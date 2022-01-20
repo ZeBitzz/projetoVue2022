@@ -49,6 +49,7 @@ export default {
         confirmpassword: "",
         email: "",
         type: "regular",
+        favorites: [],
       },
     };
   },
