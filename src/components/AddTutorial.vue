@@ -62,9 +62,10 @@ export default {
         link: "",
         thumbnail: "",
         steps: [],
-        id: JSON.parse(localStorage.getItem("tutorials")).length
-          ? JSON.parse(localStorage.getItem("tutorials")).length + 1
-          : 0,
+        id:
+          JSON.parse(localStorage.getItem("tutorials")).length > 0
+            ? JSON.parse(localStorage.getItem("tutorials")).length + 1
+            : 1,
       },
       formStep: { title: "", timestamp: "", description: "" },
     };

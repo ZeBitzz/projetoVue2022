@@ -41,6 +41,12 @@ export default new Vuex.Store({
       });
       return categories;
     },
+    getTutorial: (state) => (tutorialId) => {
+      let index = state.tutorials.findIndex(
+        (tutorial) => tutorial.id == tutorialId
+      );
+      return state.tutorials[index];
+    },
   },
   mutations: {
     SET_LOGGED_USER(state, payload) {

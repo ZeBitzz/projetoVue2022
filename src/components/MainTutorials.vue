@@ -2,12 +2,14 @@
   <div class="main">
     <h2>Tutoriais</h2>
     <p>Pode filtrar os tutoriais pela categoria que deseja.</p>
-    <select v-model="selectedCategory">
-      <option value="" disabled>--SELECIONA CATEGORIA--</option>
-      <option v-for="(category, index) in getCategories" :key="index">
-        {{ category }}
-      </option>
-    </select>
+    <div class="select-wrapper">
+      <select class="select-categories" v-model="selectedCategory">
+        <option value="" disabled>SELECIONA CATEGORIA</option>
+        <option v-for="(category, index) in getCategories" :key="index">
+          {{ category }}
+        </option>
+      </select>
+    </div>
     <ul class="list">
       <li
         class="list-item"
@@ -25,7 +27,11 @@
           </div>
           <div class="button-wrapper">
             <button><i class="far fa-heart"></i></button>
-            <button class="direction-button">Ver mais</button>
+            <router-link
+              :to="{ name: 'tutorial', params: { id: tutorial.id } }"
+            >
+              <button class="direction-button">Ver mais</button>
+            </router-link>
           </div>
         </div>
       </li>
@@ -67,7 +73,7 @@ export default {
 </script>
 <style scoped>
 .main {
-  margin: 2rem auto;
+  margin: 4rem auto;
   width: 60%;
 }
 .main h2 {
@@ -144,5 +150,16 @@ export default {
 .button-wrapper i {
   color: var(--primary-color);
   font-size: 1.25rem;
+}
+.select-categories {
+  border-radius: 4px;
+  border-color: whitesmoke;
+  padding: 0.5rem;
+}
+.select-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 0.5rem;
 }
 </style>

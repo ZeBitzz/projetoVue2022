@@ -48,5 +48,6 @@ export default {
 h5 {
   color: var(--secondary-color);
   font-size: 1.5vw;
+  text-align: center;
 }
 </style>

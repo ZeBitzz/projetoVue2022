@@ -3,7 +3,6 @@
     <router-link class="nav-brand" :to="{ name: 'home' }">
       <img src="../assets/logotut.png" alt=""
     /></router-link>
-    <li><a class="nav-link">Tutoriais</a></li>
     <router-link :to="{ name: 'profile' }">
       <li><i class="fas fa-user"></i></li>
     </router-link>

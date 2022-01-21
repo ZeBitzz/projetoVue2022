@@ -6,6 +6,7 @@ import Home from "../views/Home.vue";
 import Manager from "../views/Manager.vue";
 import store from "../store/index.js";
 import Profile from "../views/Profile.vue";
+import Tutorial from "../views/Tutorial.vue";
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,12 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: Profile,
+    meta: { public: false, layout: "dashboard" },
+  },
+  {
+    path: "/tutorial/:id",
+    name: "tutorial",
+    component: Tutorial,
     meta: { public: false, layout: "dashboard" },
   },
 ];
