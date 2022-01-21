@@ -19,7 +19,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .card {
   max-width: 50%;
   margin: 50px auto;

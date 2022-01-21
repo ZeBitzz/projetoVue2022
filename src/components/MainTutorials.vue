@@ -1,19 +1,35 @@
 <template>
-  <div>
-    <h1>Tutoriais</h1>
-    <h3>Pode filtrar os tutoriais pela categoria que deseja.</h3>
-    <tr v-for="(tutorial, index) in getTutorials" :key="index">
-      <td>{{ tutorial.title }}</td>
-      <td>{{ tutorial.category }}</td>
-      <td>{{ tutorial.link }}</td>
-      <td><button></button></td>
-      <td></td>
-    </tr>
-    <select>
-      <!--
-          select para as categorias dos tutoriaispçpç.pf    
-        -->
+  <div class="main">
+    <h2>Tutoriais</h2>
+    <p>Pode filtrar os tutoriais pela categoria que deseja.</p>
+    <select v-model="selectedCategory">
+      <option value="" disabled>--SELECIONA CATEGORIA--</option>
+      <option v-for="(category, index) in getCategories" :key="index">
+        {{ category }}
+      </option>
     </select>
+    <ul class="list">
+      <li
+        class="list-item"
+        v-for="(tutorial, index) in filteredTutorials"
+        :key="index"
+      >
+        <div class="img-wrapper">
+          <img :src="tutorial.thumbnail" :alt="tutorial.title" />
+        </div>
+        <div class="info-tutorial">
+          <div class="details-tutorial">
+            <p>{{ tutorial.category }}</p>
+            <h4>{{ tutorial.title }}</h4>
+            <p>{{ tutorial.description }}</p>
+          </div>
+          <div class="button-wrapper">
+            <button><i class="far fa-heart"></i></button>
+            <button class="direction-button">Ver mais</button>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -25,15 +41,108 @@ export default {
         tutorialId: "",
         userUsername: "",
       },
+      tutorials: [],
+      selectedCategory: "",
     };
   },
   name: "MainTutorials",
+  created() {
+    this.tutorials = this.getTutorials;
+  },
   computed: {
-    ...mapGetters(["getLoggedUser", "getTutorials"]),
+    ...mapGetters(["getLoggedUser", "getTutorials", "getCategories"]),
+    filteredTutorials() {
+      if (this.selectedCategory !== "") {
+        return this.tutorials.filter(
+          (tutorial) => tutorial.category === this.selectedCategory
+        );
+      }
+      return this.tutorials;
+    },
   },
   methods: {
     addFavorite() {},
   },
 };
 </script>
-<style></style>
+<style scoped>
+.main {
+  margin: 2rem auto;
+  width: 60%;
+}
+.main h2 {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.main p {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+.list {
+  /*   margin: 0 auto; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.list-item {
+  display: flex;
+  width: 100%;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  box-shadow: 4px 12px 20px 0 rgba(0, 0, 0, 0.04);
+}
+.img-wrapper {
+  height: 280px;
+  width: 40%;
+  overflow: hidden;
+  position: relative;
+}
+.img-wrapper img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: auto;
+}
+.info-tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  width: 60%;
+  box-sizing: border-box;
+}
+.button-wrapper {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+}
+.details-tutorial * {
+  text-align: left;
+  margin-bottom: 0.5rem !important;
+}
+.details-tutorial h4 {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.button-wrapper button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.button-wrapper .direction-button {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.5rem 2.5rem;
+  border-radius: 4px;
+}
+.button-wrapper i {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+</style>

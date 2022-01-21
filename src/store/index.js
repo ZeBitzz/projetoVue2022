@@ -32,6 +32,15 @@ export default new Vuex.Store({
     getLoggedUser: (state) => state.loggedUser,
     getUsers: (state) => state.users,
     getTutorials: (state) => state.tutorials,
+    getCategories: (state) => {
+      let categories = [];
+      state.tutorials.forEach((tutorial) => {
+        if (!categories.includes(tutorial.category)) {
+          categories.push(tutorial.category);
+        }
+      });
+      return categories;
+    },
   },
   mutations: {
     SET_LOGGED_USER(state, payload) {

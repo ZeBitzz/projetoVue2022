@@ -12,11 +12,26 @@
       <br />
       <input type="text" id="txtCategory" v-model="form.category" required />
       <br />
+      <label for="txtDescription">DESCRIÇÃO</label>
+      <br />
+      <textarea
+        rows="4"
+        cols="50"
+        id="txtDescription"
+        v-model="form.description"
+        required
+      />
+      <br />
       <label for="txtLink">LINK</label>
       <br />
       <input type="text" id="txtLink" v-model="form.link" required />
       <br />
+      <label for="txtThumbnail">THUMBNAIL</label>
+      <br />
+      <input type="text" id="txtThumbnail" v-model="form.thumbnail" required />
+      <br />
       <input type="submit" value="ADD TUTORIAL" />
+
       <FormSteps @add-step="addStep" />
       <!--  <ul
         class="containerStep"
@@ -43,7 +58,9 @@ export default {
       form: {
         title: "",
         category: "",
+        description: "",
         link: "",
+        thumbnail: "",
         steps: [],
         id: JSON.parse(localStorage.getItem("tutorials")).length
           ? JSON.parse(localStorage.getItem("tutorials")).length + 1
@@ -66,9 +83,21 @@ export default {
           link: this.form.link,
           steps: this.form.steps,
           id: this.form.id,
+          description: this.form.description,
+          thumbnail: this.form.thumbnail,
         });
-        this.form.steps = [];
-        alert("TUTORIAL CREATED!");
+        (this.form = {
+          title: "",
+          category: "",
+          description: "",
+          link: "",
+          thumbnail: "",
+          steps: [],
+          id: JSON.parse(localStorage.getItem("tutorials")).length
+            ? JSON.parse(localStorage.getItem("tutorials")).length + 1
+            : 0,
+        }),
+          alert("TUTORIAL CREATED!");
       } else {
         alert("TUTORIAL ALREADY EXIST! PLEASE TRY AGAIN!");
       }
