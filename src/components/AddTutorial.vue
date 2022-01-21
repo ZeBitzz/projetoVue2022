@@ -24,7 +24,13 @@
       <br />
       <label for="txtLink">LINK</label>
       <br />
-      <input type="text" id="txtLink" v-model="url" required />
+      <input
+        :onchange="this.validateUrl()"
+        type="text"
+        id="txtLink"
+        v-model="url"
+        required
+      />
       <br />
       <label for="txtThumbnail">THUMBNAIL</label>
       <br />
@@ -102,21 +108,35 @@ export default {
       alert("YOU JUST ADD A STEP");
     },
     getId(url) {
-      const regExp =
-        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-      const match = url.match(regExp);
-
-      return match && match[2].length === 11 ? match[2] : null;
+      if (url.includes("youtu.be")) {
+        let text = url;
+        const videoSplit = text.split("https://www.youtu.be/");
+        const videoId = videoSplit[1];
+        return videoId;
+      } else if (url.includes("youtube")) {
+        let text = url;
+        const videoSplit = text.split("https://www.youtube.com/watch?v=");
+        const videoId = videoSplit[1];
+        return videoId;
+      }
+    },
+    validateUrl() {
+      if (this.url.includes("youtube") || this.url.includes("youtu.be")) {
+        const videoId = this.getId(this.url);
+        this.embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      }
     },
   },
-  watch: {
+  /*   watch: {
     url: function (val) {
-      const videoId = this.getId(val);
-      console.log(videoId);
-      this.embedUrl = `https://www.youtube.com/embed/${videoId}`;
-      console.log(this.embedUrl);
+      if (val.includes("youtube")) {
+        const videoId = this.getId(val);
+        this.embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      } else {
+        return;
+      }
     },
-  },
+  }, */
 };
 </script>
 <style scoped>
