@@ -24,7 +24,7 @@
       <br />
       <label for="txtLink">LINK</label>
       <br />
-      <input type="text" id="txtLink" v-model="form.link" required />
+      <input type="text" id="txtLink" v-model="url" required />
       <br />
       <label for="txtThumbnail">THUMBNAIL</label>
       <br />
@@ -33,15 +33,6 @@
       <input type="submit" value="ADD TUTORIAL" />
 
       <FormSteps @add-step="addStep" />
-      <!--  <ul
-        class="containerStep"
-        v-for="(step, index) in form.steps"
-        :key="index"
-      >
-        <li>Título:{{ step.title }}</li>
-        <li>Frame Temporal: {{ step.timestamp }}</li>
-        <li>Descrição: {{ step.description }}</li>
-      </ul> -->
     </form>
   </div>
 </template>
@@ -63,11 +54,14 @@ export default {
         thumbnail: "",
         steps: [],
         id:
+          localStorage.getItem("tutorial") != null &&
           JSON.parse(localStorage.getItem("tutorials")).length > 0
             ? JSON.parse(localStorage.getItem("tutorials")).length + 1
             : 1,
       },
       formStep: { title: "", timestamp: "", description: "" },
+      embedUrl: "",
+      url: "",
     };
   },
   computed: {
@@ -81,7 +75,7 @@ export default {
         this.SET_NEW_TUTORIAL({
           title: this.form.title,
           category: this.form.category,
-          link: this.form.link,
+          link: this.embedUrl,
           steps: this.form.steps,
           id: this.form.id,
           description: this.form.description,
@@ -106,6 +100,21 @@ export default {
     addStep(step) {
       this.form.steps.push(step);
       alert("YOU JUST ADD A STEP");
+    },
+    getId(url) {
+      const regExp =
+        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(regExp);
+
+      return match && match[2].length === 11 ? match[2] : null;
+    },
+  },
+  watch: {
+    url: function (val) {
+      const videoId = this.getId(val);
+      console.log(videoId);
+      this.embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      console.log(this.embedUrl);
     },
   },
 };
