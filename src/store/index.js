@@ -57,14 +57,19 @@ export default new Vuex.Store({
       state.users.push(payload);
       localStorage.users = JSON.stringify(state.users);
     },
-    SET_LOGOUT(state) {
-      state.loggedUser = null;
-      localStorage.removeItem("loggedUser");
-    },
     SET_REMOVE_USER(state, payload) {
       let index = state.users.findIndex((user) => user.username === payload);
       state.users.splice(index, 1);
       localStorage.users = JSON.stringify(state.users);
+    },
+    SET_LOGOUT(state) {
+      state.loggedUser = null;
+      localStorage.removeItem("loggedUser");
+    },
+    SET_NEW_TUTORIAL(state, payload) {
+      console.log("payload", payload);
+      state.tutorials.push(payload);
+      localStorage.tutorials = JSON.stringify(state.tutorials);
     },
     SET_REMOVE_TUTORIAL(state, payload) {
       let index = state.tutorials.findIndex(
@@ -73,14 +78,25 @@ export default new Vuex.Store({
       state.tutorials.splice(index, 1);
       localStorage.tutorials = JSON.stringify(state.tutorials);
     },
-    SET_NEW_TUTORIAL(state, payload) {
-      console.log("payload", payload);
-      state.tutorials.push(payload);
-      localStorage.tutorials = JSON.stringify(state.tutorials);
-    },
     SET_NEW_FAVOURITE(state, payload) {
-      /* const storage = JSON.parse(localStorage.geItem("users")) */
-      console.log(payload);
+      let index = state.users.findIndex(
+        (user) => user.username === state.loggedUser.username
+      );
+      console.log(state.users[index]);
+      state.users[index].favorites.push(payload);
+      localStorage.users = JSON.stringify(state.users);
+      localStorage.loggedUser = JSON.stringify(state.users[index]);
+    },
+    SET_REMOVE_FAVOURITE(state, payload) {
+      let index = state.users.findIndex(
+        (user) => user.username === state.loggedUser.username
+      );
+      let indexFav = state.users[index].favorites.findIndex(
+        (tutorialid) => tutorialid === payload
+      );
+      state.users[index].favorites.splice(indexFav, 1);
+      localStorage.users = JSON.stringify(state.users);
+      localStorage.loggedUser = JSON.stringify(state.users[index]);
     },
   },
   modules: {},

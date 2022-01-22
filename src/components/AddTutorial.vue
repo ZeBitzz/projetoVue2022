@@ -59,11 +59,6 @@ export default {
         link: "",
         thumbnail: "",
         steps: [],
-        id:
-          localStorage.getItem("tutorial") != null &&
-          JSON.parse(localStorage.getItem("tutorials")).length > 0
-            ? JSON.parse(localStorage.getItem("tutorials")).length + 1
-            : 1,
       },
       formStep: { title: "", timestamp: "", description: "" },
       embedUrl: "",
@@ -83,7 +78,7 @@ export default {
           category: this.form.category,
           link: this.embedUrl,
           steps: this.form.steps,
-          id: this.form.id,
+          id: this.getTutorialId(),
           description: this.form.description,
           thumbnail: this.form.thumbnail,
         });
@@ -94,9 +89,6 @@ export default {
           link: "",
           thumbnail: "",
           steps: [],
-          id: JSON.parse(localStorage.getItem("tutorials")).length
-            ? JSON.parse(localStorage.getItem("tutorials")).length + 1
-            : 0,
         }),
           alert("TUTORIAL CREATED!");
       } else {
@@ -125,6 +117,9 @@ export default {
         const videoId = this.getId(this.url);
         this.embedUrl = `https://www.youtube.com/embed/${videoId}`;
       }
+    },
+    getTutorialId() {
+      return this.getTutorials[this.getTutorials.length - 1].id + 1;
     },
   },
 };

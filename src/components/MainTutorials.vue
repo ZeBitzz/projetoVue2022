@@ -26,7 +26,15 @@
             <p>{{ tutorial.description }}</p>
           </div>
           <div class="button-wrapper">
-            <button><i class="far fa-heart"></i></button>
+            <button
+              v-if="getLoggedUser.favorites.includes(tutorial.id)"
+              @click="SET_REMOVE_FAVOURITE(tutorial.id)"
+            >
+              <i class="fas fa-heart"></i>
+            </button>
+            <button v-else @click="SET_NEW_FAVOURITE(tutorial.id)">
+              <i class="far fa-heart"></i>
+            </button>
             <router-link
               :to="{ name: 'tutorial', params: { id: tutorial.id } }"
             >
@@ -39,7 +47,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -67,7 +75,7 @@ export default {
     },
   },
   methods: {
-    addFavorite() {},
+    ...mapMutations(["SET_NEW_FAVOURITE", "SET_REMOVE_FAVOURITE"]),
   },
 };
 </script>
