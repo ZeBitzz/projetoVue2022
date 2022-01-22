@@ -64,10 +64,12 @@ h1 {
   font-size: 30px;
   font-weight: bold;
   padding-bottom: 20px;
+  text-align: center;
 }
 h3 {
   font-size: 20px;
   padding-bottom: 20px;
+  text-align: center;
 }
 
 i {

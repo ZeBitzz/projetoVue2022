@@ -127,16 +127,6 @@ export default {
       }
     },
   },
-  /*   watch: {
-    url: function (val) {
-      if (val.includes("youtube")) {
-        const videoId = this.getId(val);
-        this.embedUrl = `https://www.youtube.com/embed/${videoId}`;
-      } else {
-        return;
-      }
-    },
-  }, */
 };
 </script>
 <style scoped>
@@ -154,6 +144,7 @@ ul {
 }
 .containerForm {
   padding-top: 3rem;
+  text-align: center;
 }
 h1 {
   font-size: 30px;
