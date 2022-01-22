@@ -14,6 +14,7 @@ export default new Vuex.Store({
             password: "admin",
             email: "admin@gmail.com",
             type: "admin",
+            favorites: [],
           },
         ],
     loggedUser: localStorage.loggedUser

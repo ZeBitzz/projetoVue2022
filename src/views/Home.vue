@@ -7,6 +7,7 @@
         <h5>Escolha entre os tutoriais em vídeos online que temos para si</h5>
       </div>
     </div>
+    <MainFavorites></MainFavorites>
     <MainTutorials></MainTutorials>
   </div>
 </template>
@@ -14,10 +15,12 @@
 <script>
 import { mapGetters } from "vuex";
 import MainTutorials from "../components/MainTutorials.vue";
+import MainFavorites from "../components/MainFavorites.vue";
 export default {
   name: "Home",
   components: {
     MainTutorials,
+    MainFavorites,
   },
   computed: {
     ...mapGetters(["getLoggedUser"]),

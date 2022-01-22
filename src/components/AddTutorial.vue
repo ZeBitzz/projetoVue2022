@@ -119,7 +119,10 @@ export default {
       }
     },
     getTutorialId() {
-      return this.getTutorials[this.getTutorials.length - 1].id + 1;
+      if (this.getTutorials.length > 0) {
+        return this.getTutorials[this.getTutorials.length - 1].id + 1;
+      }
+      return 1;
     },
   },
 };

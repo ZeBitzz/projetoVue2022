@@ -71,6 +71,7 @@ export default {
           (tutorial) => tutorial.category === this.selectedCategory
         );
       }
+      console.log(this.getLoggedUser);
       return this.tutorials;
     },
   },
