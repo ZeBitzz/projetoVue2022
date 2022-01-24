@@ -72,6 +72,28 @@ export default new Vuex.Store({
       state.tutorials.push(payload);
       localStorage.tutorials = JSON.stringify(state.tutorials);
     },
+    SET_TUTORIAL_COMMENTS(state, payload) {
+      console.log(payload);
+      console.log(
+        "ola",
+        state.tutorials[
+          state.tutorials.findIndex((item) => item.id === payload.tutorialId)
+        ]
+      );
+      console.log(
+        "index",
+        state.tutorials.findIndex(
+          (tutorial) => tutorial.id === payload.tutorialId
+        )
+      );
+      state.tutorials[
+        state.tutorials.findIndex(
+          (tutorial) => tutorial.id === payload.tutorialId
+        )
+      ].comments.push(payload);
+      console.log(state.tutorials);
+      localStorage.tutorials = JSON.stringify(state.tutorials);
+    },
     SET_REMOVE_TUTORIAL(state, payload) {
       let index = state.tutorials.findIndex(
         (tutorial) => tutorial.title === payload

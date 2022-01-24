@@ -38,7 +38,7 @@
       <br />
       <input type="submit" value="ADD TUTORIAL" />
 
-      <FormSteps @add-step="addStep" />
+      <FormSteps />
     </form>
   </div>
 </template>
@@ -59,11 +59,15 @@ export default {
         link: "",
         thumbnail: "",
         steps: [],
+        comments: [],
       },
-      formStep: { title: "", timestamp: "", description: "" },
+      newSteps: [],
       embedUrl: "",
       url: "",
     };
+  },
+  mounted() {
+    this.$on("add-step", (step) => this.addStep(step));
   },
   computed: {
     ...mapGetters(["getLoggedUser", "getTutorials", "isTutoriallinkAvailable"]),
@@ -81,6 +85,7 @@ export default {
           id: this.getTutorialId(),
           description: this.form.description,
           thumbnail: this.form.thumbnail,
+          comments: this.form.comments,
         });
         (this.form = {
           title: "",
@@ -96,8 +101,12 @@ export default {
       }
     },
     addStep(step) {
+      console.log("entrou no addstep");
       this.form.steps.push(step);
-      alert("YOU JUST ADD A STEP");
+      this.newSteps.push(step);
+      console.log("newsteps", this.newSteps);
+      console.log("formsteps", this.form.steps);
+      /*       alert("YOU JUST ADD A STEP"); */
     },
     getId(url) {
       if (url.includes("youtu.be")) {

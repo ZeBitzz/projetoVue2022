@@ -28,16 +28,21 @@
           </div>
         </div>
       </div>
+      <div class="comentary-wrapper">
+        <textarea v-model="commentText"></textarea>
+        <button type="submit" @click="addComments">Submeter</button>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "tutorial",
   data() {
     return {
       tutorial: {},
+      commentText: "",
     };
   },
   created() {
@@ -45,7 +50,17 @@ export default {
     console.log(this.tutorial);
   },
   computed: {
-    ...mapGetters(["getTutorial"]),
+    ...mapGetters(["getTutorial", "getLoggedUser", "getTutorials"]),
+  },
+  methods: {
+    ...mapMutations(["SET_TUTORIAL_COMMENTS"]),
+    addComments() {
+      this.SET_TUTORIAL_COMMENTS({
+        username: this.getLoggedUser.username,
+        tutorialId: parseInt(this.$route.params.id),
+        text: this.commentText,
+      });
+    },
   },
 };
 </script>
