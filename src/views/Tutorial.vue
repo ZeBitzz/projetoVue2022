@@ -11,8 +11,8 @@
     </div>
     <div class="white-container">
       <div class="information-wrapper">
-        <p>{{ tutorial.category }}</p>
         <h4>{{ tutorial.title }}</h4>
+        <p>{{ tutorial.category }}</p>
         <p>{{ tutorial.description }}</p>
       </div>
       <div
@@ -31,6 +31,15 @@
       <div class="comentary-wrapper">
         <textarea v-model="commentText"></textarea>
         <button type="submit" @click="addComments">Submeter</button>
+      </div>
+      <div
+        class="comentarys-wrapper"
+        v-for="(topic, index) in tutorial.comments"
+        :key="index"
+      >
+        <p>{{ topic.username }}</p>
+        <p>{{ topic.text }}</p>
+        <p></p>
       </div>
     </div>
   </div>
@@ -94,6 +103,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 12px 20px 0 rgba(0, 0, 0, 0.04);
+  margin: 50px auto;
+  max-width: 60%;
 }
 
 .step-card {
@@ -109,5 +123,17 @@ export default {
   background-color: var(--primary-color);
   color: white;
   text-align: center;
+}
+.information-wrapper h4 {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.information-wrapper p {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+.information-wrapper {
+  margin: auto 50px;
 }
 </style>
