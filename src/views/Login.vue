@@ -45,7 +45,7 @@ export default {
         this.SET_LOGGED_USER(this.username);
         this.$router.push({ name: "home" });
       } else {
-        alert("NO USER FOUND! PLEASE TRY AGAIN!");
+        alert("NO FOI ENCONTRADO NENHUM UTILIZADOR! TENTA DE NOVO!");
       }
     },
     ...mapMutations(["SET_LOGGED_USER"]),

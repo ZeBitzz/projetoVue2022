@@ -38,7 +38,7 @@
       <br />
       <input type="submit" value="ADD TUTORIAL" />
 
-      <FormSteps />
+      <FormSteps @addStep="addStep" />
     </form>
   </div>
 </template>
@@ -61,13 +61,9 @@ export default {
         steps: [],
         comments: [],
       },
-      newSteps: [],
       embedUrl: "",
       url: "",
     };
-  },
-  mounted() {
-    this.$on("add-step", (step) => this.addStep(step));
   },
   computed: {
     ...mapGetters(["getLoggedUser", "getTutorials", "isTutoriallinkAvailable"]),
@@ -95,18 +91,14 @@ export default {
           thumbnail: "",
           steps: [],
         }),
-          alert("TUTORIAL CREATED!");
+          alert("TUTORIAL CRIADO!");
       } else {
-        alert("TUTORIAL ALREADY EXIST! PLEASE TRY AGAIN!");
+        alert("JÁ EXISTE ESTE TUTORIAL,TENTA DE NOVO!");
       }
     },
     addStep(step) {
-      console.log("entrou no addstep");
       this.form.steps.push(step);
-      this.newSteps.push(step);
-      console.log("newsteps", this.newSteps);
-      console.log("formsteps", this.form.steps);
-      /*       alert("YOU JUST ADD A STEP"); */
+      alert("ADICIONOU UM PASSO!");
     },
     getId(url) {
       if (url.includes("youtu.be")) {

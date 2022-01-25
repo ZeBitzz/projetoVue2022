@@ -35,7 +35,8 @@ export default {
 
   methods: {
     submitForm() {
-      this.$emit("add-step", this.formStep);
+      this.$emit("addStep", this.formStep);
+      this.formStep = { title: "", timestamp: "", description: "" };
     },
   },
 };

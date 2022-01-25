@@ -65,7 +65,7 @@ export default {
         this.SET_NEW_USER(this.form);
         this.$router.push({ name: "login" });
       } else {
-        alert("USER ALREADY EXIST! PLEASE TRY AGAIN!");
+        alert("ESTE UTILIZADOR JÁ EXISTE! TENTA DE NOVO!");
       }
     },
     ...mapMutations(["SET_NEW_USER"]),
