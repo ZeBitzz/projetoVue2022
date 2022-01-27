@@ -34,7 +34,7 @@ export default {
   methods: {
     ...mapMutations(["SET_REMOVE_USER"]),
     removeUser(username) {
-      if (confirm("DO YOU REALLY WANT TO REMOVE THIS USER?")) {
+      if (confirm("Quer remover este utilizador?")) {
         this.SET_REMOVE_USER(username);
       }
     },

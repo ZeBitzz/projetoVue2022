@@ -81,7 +81,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 140vh;
+  height: 200vh;
 }
 .blue-container {
   background-color: var(--primary-color);
