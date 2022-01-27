@@ -16,9 +16,9 @@
         <input type="submit" value="LOGIN" />
       </form>
       <h5>
-        No account?
+        Não têm conta?
         <router-link class="register-text" :to="{ name: 'register' }"
-          >Please create one</router-link
+          >Crie uma aqui!</router-link
         >
       </h5>
     </div>

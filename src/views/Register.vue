@@ -32,6 +32,12 @@
         <br />
         <input type="submit" value="REGISTER" />
       </form>
+      <h5>
+        Já tem conta?
+        <router-link class="register-text" :to="{ name: 'login' }"
+          >Faça o login!</router-link
+        >
+      </h5>
     </div>
   </div>
 </template>
@@ -65,7 +71,7 @@ export default {
         this.SET_NEW_USER(this.form);
         this.$router.push({ name: "login" });
       } else {
-        alert("ESTE UTILIZADOR JÁ EXISTE! TENTA DE NOVO!");
+        alert("ESTE UTILIZADOR JÁ EXISTE/PALAVRA PASSE ERRADA");
       }
     },
     ...mapMutations(["SET_NEW_USER"]),
